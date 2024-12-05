@@ -27,6 +27,7 @@
     <!--begin::Global Stylesheets Bundle(mandatory for all pages)-->
     <link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css"/>
     <link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css"/>
+    @yield('css')
     <!--end::Global Stylesheets Bundle-->
     <script>// Frame-busting to prevent site from being loaded within a frame without permission (click-jacking) if (window.top != window.self) { window.top.location.replace(window.self.location.href); }</script>
 </head>
@@ -431,9 +432,10 @@
 <script src="assets/js/custom/utilities/modals/create-project/files.js"></script>
 <script src="assets/js/custom/utilities/modals/create-project/complete.js"></script>
 <script src="assets/js/custom/utilities/modals/create-project/main.js"></script>
-<script src="assets/js/custom/utilities/modals/users-search.js"></script>
-<!--end::Custom Javascript-->
-<!--end::Javascript-->
+
+<script src="{{ asset('assets/js/rutas.js') }}"></script>
+
+@yield('js')
 </body>
 <!--end::Body-->
 </html>

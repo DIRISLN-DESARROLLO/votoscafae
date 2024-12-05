@@ -20,8 +20,7 @@
                     <!--end::Header toggle-->
                     <!--begin::Logo-->
                     <a href="../dist/index.html" class="d-flex align-items-center mb-1 mb-lg-0 pt-lg-1">
-                        <img alt="Logo" src="assets/media/logos/default-small.svg" class="d-block d-sm-none"/>
-                        <img alt="Logo" src="assets/media/logos/default-X.svg" class="d-none d-sm-block"/>
+                        <img alt="Logo" src="img/logo.png" class="d-none d-sm-block" width="350px"/>
                     </a>
                     <!--end::Logo-->
                 </div>
@@ -54,10 +53,18 @@
                                 <!--end::Avatar-->
                                 <!--begin::Username-->
                                 <div class="d-flex flex-column">
-                                    <div class="fw-bold d-flex align-items-center fs-5">Arturo Llanos B.
-                                        <span class="badge badge-light-success fw-bold fs-8 px-2 py-1 ms-2">Tec. Informatico</span>
+                                    <div class="fw-bold d-flex align-items-center fs-5">
+                                        @php
+                                            $user = \Illuminate\Support\Facades\Auth::user();
+                                           if ($user) {
+                                               $nombre = $user->nombre;
+                                               $email = $user->email;
+                                           }
+                                        @endphp
+                                        {{@$nombre}}
+                                        <span class="badge badge-light-success fw-bold fs-8 px-2 py-1 ms-2">Usuario</span>
                                     </div>
-                                    <a href="#" class="fw-semibold text-muted text-hover-primary fs-7">arturo.llanos@dirislimanorte.gob.pe</a>
+                                    <a href="#" class="fw-semibold text-muted text-hover-primary fs-7">{{@$email}}</a>
                                 </div>
                                 <!--end::Username-->
                             </div>
@@ -68,7 +75,7 @@
                         <!--end::Menu separator-->
                         <!--begin::Menu item-->
                         <div class="menu-item px-5">
-                            <a href="../dist/account/overview.html" class="menu-link px-5">Mi perfil</a>
+                            <a href="#" class="menu-link px-5">Mi perfil</a>
                         </div>
                         <!--end::Menu item-->
 
@@ -164,7 +171,7 @@
                         <!--end::Menu separator-->
                         <!--begin::Menu item-->
                         <div class="menu-item px-5">
-                            <a href="../dist/authentication/layouts/corporate/sign-in.html"
+                            <a href="{{route('cerrarsession')}}"
                                class="menu-link px-5">Cerrar Sesión</a>
                         </div>
                         <!--end::Menu item-->
@@ -198,46 +205,42 @@
                 <div
                     class="menu menu-rounded menu-active-bg menu-state-primary menu-column menu-lg-row menu-title-gray-700 menu-icon-gray-500 menu-arrow-gray-500 menu-bullet-gray-500 my-5 my-lg-0 align-items-stretch fw-semibold px-2 px-lg-0"
                     id="kt_app_header_menu" data-kt-menu="true">
-                    <!--begin:Menu item-->
+                    <!--here-->
                     <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
                          data-kt-menu-placement="bottom-start"
-                         class="menu-item here show menu-here-bg menu-lg-down-accordion me-0 me-lg-2">
-                        <!--begin:Menu link-->
-                        <span class="menu-link">
+                         class="menu-item  show menu-here-bg menu-lg-down-accordion me-0 me-lg-2">
+
+                        <span class="menu-link" id="btn-home">
 											<span class="menu-title">Inicio</span>
 											<span class="menu-arrow d-lg-none"></span>
-										</span>
-                        <!--end:Menu link-->
-                    </div>
-                    <!--end:Menu item-->
+                        </span>
 
-                    <!--begin:Menu item-->
+                    </div>
+
+
+
                     <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
                          data-kt-menu-placement="bottom-start"
                          class="menu-item menu-lg-down-accordion menu-sub-lg-down-indention me-0 me-lg-2">
-                        <!--begin:Menu link-->
                         <span class="menu-link">
 											<span class="menu-title">Opciones</span>
 											<span class="menu-arrow d-lg-none"></span>
 										</span>
-                        <!--end:Menu link-->
-                        <!--begin:Menu sub-->
-                        <div
-                            class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown px-lg-2 py-lg-4 w-lg-250px">
+                        <div  class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown px-lg-2 py-lg-4 w-lg-250px">
                             <!--begin:Menu item-->
                             <div data-kt-menu-trigger="{default:'click', lg: 'hover'}"
                                  data-kt-menu-placement="right-start" class="menu-item menu-lg-down-accordion">
                                 <!--begin:Menu link-->
-                                <span class="menu-link">
-													<span class="menu-icon">
-														<i class="ki-duotone ki-message-text-2 fs-2">
-															<span class="path1"></span>
-                											<span class="path2"></span>
-                                                            <span class="path3"></span>
-														</i>
-													</span>
-													<span class="menu-title">Listas</span
-												</span>
+                                <span class="menu-link" id="btn-listas">
+                                        <span class="menu-icon">
+                                            <i class="ki-duotone ki-message-text-2 fs-2">
+                                                <span class="path1"></span>
+                                                <span class="path2"></span>
+                                                <span class="path3"></span>
+                                            </i>
+                                        </span>
+                                        <span class="menu-title" >Listas</span>
+                                </span>
                                 <!--end:Menu link-->
 
                             </div>
@@ -246,7 +249,7 @@
                             <div data-kt-menu-trigger="{default:'click', lg: 'hover'}"
                                  data-kt-menu-placement="right-start" class="menu-item menu-lg-down-accordion">
                                 <!--begin:Menu link-->
-                                <span class="menu-link">
+                                <span class="menu-link" id="btn-resultados">
 													<span class="menu-icon">
 														<i class="ki-duotone ki-chart-simple fs-2">
                                                             <span class="path1"></span>
@@ -256,7 +259,7 @@
                                                         </i>
 													</span>
 													<span class="menu-title">Resultados</span>
-												</span>
+								</span>
                                 <!--end:Menu link-->
 
                             </div>
@@ -266,7 +269,7 @@
                             <div data-kt-menu-trigger="{default:'click', lg: 'hover'}"
                                  data-kt-menu-placement="right-start" class="menu-item menu-lg-down-accordion">
                                 <!--begin:Menu link-->
-                                <span class="menu-link">
+                                <span class="menu-link" id="btn-constancia">
 													<span class="menu-icon">
 														<i class="ki-duotone ki-file-added fs-2">
 															<span class="path1"></span>
@@ -281,74 +284,26 @@
                             <!--end:Menu item-->
 
                         </div>
-                        <!--end:Menu sub-->
                     </div>
-                    <!--end:Menu item-->
-                    <!--begin:Menu item-->
+
+
+
                     <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
                          data-kt-menu-placement="bottom-start"
                          class="menu-item menu-lg-down-accordion menu-sub-lg-down-indention me-0 me-lg-2">
                         <!--begin:Menu link-->
-                        <span class="menu-link">
+                        <span class="menu-link" id="btn-ayuda">
 											<span class="menu-title">Ayuda</span>
-										</span>
+                        </span>
                         <!--end:Menu link-->
                     </div>
-                    <!--end:Menu item-->
+
                 </div>
                 <!--end::Menu-->
             </div>
-            <!--end::Menu wrapper-->
-            <!--begin::Search-->
-            <div class="d-flex align-items-center w-100 w-lg-225px pt-5 pt-lg-0">
-                <!--begin::Search-->
-                <div id="kt_header_search" class="header-search d-flex align-items-center w-100 w-lg-225px"
-                     data-kt-search-keypress="true" data-kt-search-min-length="2" data-kt-search-enter="enter"
-                     data-kt-search-layout="menu" data-kt-search-responsive="" data-kt-menu-trigger="auto"
-                     data-kt-menu-permanent="true" data-kt-menu-placement="bottom-start">
-                    <!--begin::Form(use d-none d-lg-block classes for responsive search)-->
-                    <form data-kt-search-element="form" class="w-100 position-relative mb-5 mb-lg-0"
-                          autocomplete="off">
-                        <!--begin::Hidden input(Added to disable form autocomplete)-->
-                        <input type="hidden"/>
-                        <!--end::Hidden input-->
-                        <!--begin::Icon-->
-                        <i class="ki-duotone ki-magnifier search-icon fs-2 text-gray-500 position-absolute top-50 translate-middle-y ms-5">
-                            <span class="path1"></span>
-                            <span class="path2"></span>
-                        </i>
-                        <!--end::Icon-->
-                        <!--begin::Input-->
-                        <input type="text" class="search-input form-control ps-13" name="search" value=""
-                               placeholder="Buscar..." data-kt-search-element="input"/>
-                        <!--end::Input-->
-                        <!--begin::Spinner-->
-                        <span
-                            class="search-spinner position-absolute top-50 end-0 translate-middle-y lh-0 d-none me-5"
-                            data-kt-search-element="spinner">
-											<span
-                                                class="spinner-border h-15px w-15px align-middle text-gray-400"></span>
-										</span>
-                        <!--end::Spinner-->
-                        <!--begin::Reset-->
-                        <span
-                            class="search-reset btn btn-flush btn-active-color-primary position-absolute top-50 end-0 translate-middle-y lh-0 d-none me-4"
-                            data-kt-search-element="clear">
-											<i class="ki-duotone ki-cross fs-2 fs-lg-1 me-0">
-												<span class="path1"></span>
-												<span class="path2"></span>
-											</i>
-										</span>
-                        <!--end::Reset-->
-                    </form>
-                    <!--end::Form-->
-
-                </div>
-                <!--end::Search-->
-            </div>
-            <!--end::Search-->
         </div>
         <!--end::Header secondary container-->
     </div>
     <!--end::Header secondary-->
 </div>
+

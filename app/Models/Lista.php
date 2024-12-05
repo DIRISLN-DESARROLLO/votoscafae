@@ -12,5 +12,4 @@ class Lista extends Model
     {
         return $this->hasMany(Miembro::class);
     }
-
 }

@@ -73,17 +73,11 @@
 					<div class="d-flex flex-column position-xl-fixed top-0 bottom-0 w-xl-600px scroll-y">
 						<!--begin::Header-->
 						<div class="d-flex flex-row-fluid flex-column text-center p-5 p-lg-10 pt-lg-20">
-							<!--begin::Logo-->
 							<a href="../dist/index.html" class="py-2 py-lg-20">
-								<img alt="Logo" src="assets/media/logos/default.svg" class="h-40px h-lg-50px" />
+                                <img alt="Logo" src="img/logo.png" class=" h-40px h-lg-50px" width="350px"/>
 							</a>
-							<!--end::Logo-->
-							<!--begin::Title-->
 							<h1 class="d-none d-lg-block fw-bold text-white fs-2qx pb-5 pb-md-10">Votaciones SUB CAFAE</h1>
-							<!--end::Title-->
-							<!--begin::Description-->
 							<p class="d-none d-lg-block fw-semibold fs-2 text-white">Plataforma virtual para el proceso electoral</p>
-							<!--end::Description-->
 						</div>
 						<!--end::Header-->
 						<!--begin::Illustration-->
@@ -140,17 +134,12 @@
 									<input class="form-control form-control-lg form-control-solid" type="date" placeholder="ingrese la Fecha de Emisión de su DNI" name="fecha_emision" id="fecha_emision" autocomplete="off"  />
 									<!--end::Input-->
 								</div>
-								<!--end::Input group-->
-                                <div id="image-container">
-                                    <img id="dynamic-image" src="" alt="Imagen dinámica">
-                                </div>
-								<!--begin::Actions-->
 								<div class="text-center">
 									<!--begin::Submit button-->
                                     <button type="submit" id="kt_sign_in_submit" class="btn btn-lg btn-primary w-100 mb-5">
-                                        <span class="indicator-label">Ingresar</span>
-                                        <span class="indicator-progress">Validando...
-                                        <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                                        <span class="indicator-label" id="btn-text">Ingresar</span>
+                                        <span class="indicator-progress" id="textV">Validando...
+                                        <span class="spinner-border spinner-border-sm align-middle ms-2" id="load"></span></span>
                                     </button>
                                     <!--end::Submit button-->
 									<!--begin::Separator-->
@@ -166,6 +155,9 @@
 									<img alt="Logo" src="assets/media/svg/brand-logos/youtube-play.svg" class="h-20px me-3" />Video</a>
 									<!--end::Google link-->
 								</div>
+                                <div id="image-container">
+                                    <img id="dynamic-image" src="" alt="Imagen dinámica">
+                                </div>
 
 								<!--end::Actions-->
 							</form>

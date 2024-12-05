@@ -59,32 +59,16 @@ var KTSigninGeneral = function () {
             }
         );
     }
-
     var handleSubmitDemo = function (e) {
-        // Handle form submit
         submitButton.addEventListener('click', function (e) {
-            // Prevent button default action
             e.preventDefault();
-
-            // Validate form
             validator.validate().then(function (status) {
                 if (status == 'Valid') {
-                    // Show loading indication
-                    submitButton.setAttribute('data-kt-indicator', 'on');
-
-                    // Disable button to avoid multiple click
+                   submitButton.setAttribute('data-kt-indicator', 'on');
                     submitButton.disabled = true;
-
-
-                    // Simulate ajax request
                     setTimeout(function () {
-                        // Hide loading indication
                         submitButton.removeAttribute('data-kt-indicator');
-
-                        // Enable button
                         submitButton.disabled = false;
-
-                        // Show message popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
                         Swal.fire({
                             text: "¡Has iniciado sesión exitosamente!",
                             icon: "success",
@@ -107,7 +91,6 @@ var KTSigninGeneral = function () {
                         });
                     }, 2000);
                 } else {
-                    // Show error popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
                     Swal.fire({
                         text: "Lo sentimos, uno de los campos ingresado es incorrecto, por favor intente nuevamente",
                         icon: "error",
@@ -132,8 +115,7 @@ var KTSigninGeneral = function () {
 
             // Validate form
             validator.validate().then(function (status) {
-                if (status == 'Valid') {
-
+                if (status === 'Valid') {
                     // Show loading indication
                     submitButton.setAttribute('data-kt-indicator', 'on');
 
@@ -156,8 +138,15 @@ var KTSigninGeneral = function () {
                             },
                             beforeSend:function(){
                                 console.log("consultando");
+                                $("#textV").show();
+                                $("#load").show();
+                                $("#btn-text").hide();
                             },
                             success:function(response){
+                                $("#textV").hide();
+                                $("#load").hide();
+                                $("#btn-text").show();
+                                submitButton.disabled = false;
                                 console.log("respuesta del controlador",response);
                                 if(response?.estado){
                                     Swal.fire({
@@ -169,7 +158,7 @@ var KTSigninGeneral = function () {
                                             confirmButton: "btn btn-primary"
                                         }
                                     }).then(() => {
-                                        window.location.href = '/votacion';
+                                        window.location.href = '/home';
                                     });
                                 }else{
                                     Swal.fire({
@@ -197,59 +186,7 @@ var KTSigninGeneral = function () {
                             }
                         }
                     );
-
-                   /*
-                    axios.post(submitButton.closest('form').getAttribute('action'), new FormData(form)).then(function (response) {
-                        if (response) {
-                            form.reset();
-                            console.log("promesa",response)
-                            // Show message popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
-                            Swal.fire({
-                                text: "¡Has iniciado sesión exitosamente!",
-                                icon: "success",
-                                buttonsStyling: false,
-                                confirmButtonText: "¡Ok, lo tengo!",
-                                customClass: {
-                                    confirmButton: "btn btn-primary"
-                                }
-                            });
-
-                            const redirectUrl = form.getAttribute('data-kt-redirect-url');
-
-                            if (redirectUrl) {
-                                location.href = redirectUrl;
-                            }
-                        } else {
-                            console.log("Error", response)
-                            Swal.fire({
-                                text: "Lo sentimos, uno de los campos ingresado es incorrecto, por favor intente nuevamente",
-                                icon: "error",
-                                buttonsStyling: false,
-                                confirmButtonText: "¡Ok, lo tengo!",
-                                customClass: {
-                                    confirmButton: "btn btn-primary"
-                                }
-                            });
-                        }
-                    }).catch(function (error) {
-                        Swal.fire({
-                            text: "Lo sentimos, parece que se detectaron algunos errores, por favor inténtalo de nuevo.",
-                            icon: "error",
-                            buttonsStyling: false,
-                            confirmButtonText: "¡Ok, lo tengo!",
-                            customClass: {
-                                confirmButton: "btn btn-primary"
-                            }
-                        });
-
-                    }).then(() => {
-                        submitButton.removeAttribute('data-kt-indicator');
-
-                        submitButton.disabled = false;
-                    });
-                    */
                 } else {
-                    // Show error popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
                     Swal.fire({
                         text: "Lo sentimos, parece que se detectaron algunos errores, por favor inténtalo de nuevo.",
                         icon: "error",
@@ -283,9 +220,9 @@ var KTSigninGeneral = function () {
             handleValidation();
 
             if (isValidUrl(submitButton.closest('form').getAttribute('action'))) {
-                handleSubmitAjax(); // use for ajax submit
+                handleSubmitAjax();
             } else {
-                handleSubmitDemo(); // used for demo purposes only
+                handleSubmitDemo();
             }
         }
     };

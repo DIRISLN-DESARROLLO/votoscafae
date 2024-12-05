@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
@@ -18,9 +19,8 @@ class AuthController extends Controller
         try {
             $credentials = $request->only('dni', 'codigo_verificador', 'fecha_emision');
             $user = User::where($credentials)->first();
-            //  $token = $user->createToken('YourAppName')->plainTextToken;
             if ($user) {
-               // Auth::login($user);
+               Auth::login($user);
                 return response()->json([
                     'message' => 'Login successful',
                     'user' => $user,
@@ -49,6 +49,7 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('admin.login');
+        return redirect()->route('login');
     }
+
 }
