@@ -18,11 +18,15 @@ class AuthController extends Controller
         $credentials = $request->only('dni', 'codigo_verificador', 'fecha_emision');
 
         $user = User::where($credentials)->first();
+      //  $token = $user->createToken('YourAppName')->plainTextToken;
         if ($user) {
             Auth::login($user);
-            //return redirect()->route('votacion');
-           // return redirect()->route('admin.index');
-            return response()->json("paso");
+             return response()->json([
+                 'message' => 'Login successful',
+                 'user' => $user,
+                 'estado'=>true
+                // 'token' => $token,
+             ]);
         }
 
         return redirect()->back()->withErrors(['error' => 'Credenciales incorrectas']);

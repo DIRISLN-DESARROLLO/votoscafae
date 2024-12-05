@@ -1,19 +1,7 @@
 <!DOCTYPE html>
-<!--
-Author: Keenthemes
-Product Name: Oswald
-Product Version: 1.0.0
-Upgrade to Pro: https://keenthemes.com/products/oswald-html-pro
-Website: http://www.keenthemes.com
-Contact: support@keenthemes.com
-Follow: www.twitter.com/keenthemes
-Dribbble: www.dribbble.com/keenthemes
-Like: www.facebook.com/keenthemes
-License: For each use you must have a valid license purchased only from above link in order to legally use the theme for your project.
--->
-<html lang="en">
+<html lang="es">
 	<!--begin::Head-->
-	<head><base href="../../"/>
+	<head>
 		<title>Login SUBCAFAE - DIRIS Lima Norte</title>
 		<meta charset="utf-8" />
 		<meta name="description" content="Axel admin dashboard live demo. Check out all the features of the admin panel. A large number of settings, additional services and widgets." />
@@ -24,6 +12,7 @@ License: For each use you must have a valid license purchased only from above li
 		<meta property="og:title" content="Oswald HTML Free - Bootstrap 5 HTML Multipurpose Admin Dashboard Theme" />
 		<meta property="og:url" content="https://keenthemes.com/products/oswald-html-pro" />
 		<meta property="og:site_name" content="Keenthemes | Oswald HTML Free" />
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 		<link rel="canonical" href="https://preview.keenthemes.com/axel-html-free" />
 		<link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
 		<!--begin::Fonts(mandatory for all pages)-->
@@ -158,7 +147,6 @@ License: For each use you must have a valid license purchased only from above li
 								<!--begin::Actions-->
 								<div class="text-center">
 									<!--begin::Submit button-->
-                                    <button type="submit">Iniciar Sesión</button>
                                     <button type="submit" id="kt_sign_in_submit" class="btn btn-lg btn-primary w-100 mb-5">
                                         <span class="indicator-label">Ingresar</span>
                                         <span class="indicator-progress">Validando...
@@ -206,7 +194,7 @@ License: For each use you must have a valid license purchased only from above li
 		</div>
 		<!--end::Root-->
         <script>
-            var urlLogin ={{ route('login') }};
+            var urlLogin ="{{ route('login') }}";
             // Array de URLs de imágenes
             const images = [
                 "https://apps.reniec.gob.pe/renovacionDni/assets/img/imagen_principa.png",
@@ -238,7 +226,8 @@ License: For each use you must have a valid license purchased only from above li
 		<script src="assets/js/scripts.bundle.js"></script>
 		<!--end::Global Javascript Bundle-->
 		<!--begin::Custom Javascript(used for this page only)-->
-		<script src="assets/js/custom/authentication/sign-in/general.js"></script>
+        <!--<script src="assets/js/custom/authentication/sign-in/general.js"></script>-->
+        <script src="{{ asset('assets/js/custom/authentication/sign-in/general.js') }}"></script>
 		<!--end::Custom Javascript-->
 		<!--end::Javascript-->
 	</body>

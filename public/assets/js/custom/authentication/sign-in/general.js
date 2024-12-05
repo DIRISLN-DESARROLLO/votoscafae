@@ -1,6 +1,7 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 var __webpack_exports__ = {};
+
 /*!**********************************************************!*\
   !*** ../src/js/custom/authentication/sign-in/general.js ***!
   \**********************************************************/
@@ -138,23 +139,55 @@ var KTSigninGeneral = function () {
 
                     // Disable button to avoid multiple click
                     submitButton.disabled = true;
-                    console.log("Im",status);
+
                     // Check axios library docs: https://axios-http.com/docs/intro
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') // Obtén el token del meta tag
+                        }
+                    });
                     $.ajax(
                         {
                             type:'post',
                             url:urlLogin,
-                            sendBefore:function(){
+                            beforeSend:function(){
                                 console.log("consultando");
                             },
-                            suucces:function(response){
-                                if(response){
-                                    console.log(response);
+                            success:function(response){
+                                if(response?.estado){
+                                    Swal.fire({
+                                        text: "¡Has iniciado sesión exitosamente!",
+                                        icon: "success",
+                                        buttonsStyling: false,
+                                        confirmButtonText: "¡Ok, lo tengo!",
+                                        customClass: {
+                                            confirmButton: "btn btn-primary"
+                                        }
+                                    }).then(() => {
+                                        window.location.href = '/votacion';
+                                    });
                                 }else{
+                                    Swal.fire({
+                                        text: "Lo sentimos, uno de los campos ingresado es incorrecto, por favor intente nuevamente",
+                                        icon: "error",
+                                        buttonsStyling: false,
+                                        confirmButtonText: "¡Ok, lo tengo!",
+                                        customClass: {
+                                            confirmButton: "btn btn-primary"
+                                        }
+                                    });
                                 }
                             },
                             error:function(error){
-
+                                Swal.fire({
+                                    text: "Lo sentimos, uno de los campos ingresado es incorrecto, por favor intente nuevamente",
+                                    icon: "error",
+                                    buttonsStyling: false,
+                                    confirmButtonText: "¡Ok, lo tengo!",
+                                    customClass: {
+                                        confirmButton: "btn btn-primary"
+                                    }
+                                });
                             }
                         }
                     );
