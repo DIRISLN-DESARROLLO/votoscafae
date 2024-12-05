@@ -15,21 +15,35 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $credentials = $request->only('dni', 'codigo_verificador', 'fecha_emision');
-
-        $user = User::where($credentials)->first();
-      //  $token = $user->createToken('YourAppName')->plainTextToken;
-        if ($user) {
-            Auth::login($user);
-             return response()->json([
-                 'message' => 'Login successful',
-                 'user' => $user,
-                 'estado'=>true
+        try {
+            $credentials = $request->only('dni', 'codigo_verificador', 'fecha_emision');
+            $user = User::where($credentials)->first();
+            //  $token = $user->createToken('YourAppName')->plainTextToken;
+            if ($user) {
+               // Auth::login($user);
+                return response()->json([
+                    'message' => 'Login successful',
+                    'user' => $user,
+                    'estado'=>true,
+                    'dni'=> $request->dni
+                    // 'token' => $token,
+                ]);
+            }else{
+                return response()->json([
+                    'message' => 'Usuario no encontrado',
+                    'estado'=>false,
+                    'dni'=> $request->dni
+                    // 'token' => $token,
+                ]);
+            }
+        }catch (\Exception $exception){
+            return response()->json([
+                'message' => 'Error del servidor: '.$exception->getMessage(),
+                'estado'=>false,
+                'dni'=> $request->dni
                 // 'token' => $token,
-             ]);
+            ],500);
         }
-
-        return redirect()->back()->withErrors(['error' => 'Credenciales incorrectas']);
     }
 
     public function logout()

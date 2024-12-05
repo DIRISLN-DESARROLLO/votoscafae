@@ -119,7 +119,7 @@
 									<label class="form-label fw-bold text-dark fs-6">Numero de DNI / DNIe / CE</label>
 									<!--end::Label-->
 									<!--begin::Input-->
-									<input class="form-control form-control-lg form-control-solid" type="text" placeholder="ingrese su número de DNI ó DNIe ó CE" name="dni" autocomplete="off" />
+									<input class="form-control form-control-lg form-control-solid" type="text" placeholder="ingrese su número de DNI ó DNIe ó CE" name="dni" id="dni" autocomplete="off" />
 									<!--end::Input-->
 								</div>
 								<!--end::Input group-->
@@ -129,7 +129,7 @@
 									<label class="form-label fw-bold text-dark fs-6">Código de Verificación del DNI</label>
 									<!--end::Label-->
 									<!--begin::Input-->
-									<input class="form-control form-control-lg form-control-solid" type="text" placeholder="ingrese el Código de verificación" name="codigo_verificador" autocomplete="off"  />
+									<input class="form-control form-control-lg form-control-solid" type="text" placeholder="ingrese el Código de verificación" name="codigo_verificador" id="codigo_verificador" autocomplete="off"  />
 									<!--end::Input-->
 								</div>
 								<div class="fv-row mb-10">
@@ -137,7 +137,7 @@
 									<label class="form-label fw-bold text-dark fs-6">Fecha de Emision del DNI</label>
 									<!--end::Label-->
 									<!--begin::Input-->
-									<input class="form-control form-control-lg form-control-solid" type="date" placeholder="ingrese la Fecha de Emisión de su DNI" name="fecha_emision" autocomplete="off"  />
+									<input class="form-control form-control-lg form-control-solid" type="date" placeholder="ingrese la Fecha de Emisión de su DNI" name="fecha_emision" id="fecha_emision" autocomplete="off"  />
 									<!--end::Input-->
 								</div>
 								<!--end::Input group-->

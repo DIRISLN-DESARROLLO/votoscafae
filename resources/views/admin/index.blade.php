@@ -508,3 +508,10 @@
     <!--end::Content-->
 </div>
 @endsection
+@section('css')
+
+@stop
+
+@section('js')
+
+@stop

@@ -10,9 +10,9 @@ Route::get('/', function () {
 });
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('admin.index');
-});
+});*/
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);

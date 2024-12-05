@@ -3,7 +3,7 @@
 <!--begin::Head-->
 <head>
     <base href=""/>
-    <title>Votaciones SUB-CAFAE - 2024</title>
+    <title>Votaciones SUB-CAFAE </title>
     <meta charset="utf-8"/>
     <meta name="description"
           content="Axel admin dashboard live demo. Check out all the features of the admin panel. A large number of settings, additional services and widgets."/>

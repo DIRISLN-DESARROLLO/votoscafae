@@ -12,8 +12,8 @@ class VotacionController extends Controller
     public function show()
     {
         $listas = Lista::with('miembros')->get();
-        //return view('votacion.index', compact('listas'));
-        return view('dashboard', compact('listas'));
+        return view('admin.index', compact('listas'));
+        //return view('dashboard', compact('listas'));
     }
 
     public function votar(Request $request)

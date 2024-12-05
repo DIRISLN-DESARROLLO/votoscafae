@@ -140,7 +140,6 @@ var KTSigninGeneral = function () {
                     // Disable button to avoid multiple click
                     submitButton.disabled = true;
 
-                    // Check axios library docs: https://axios-http.com/docs/intro
                     $.ajaxSetup({
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') // Obtén el token del meta tag
@@ -150,13 +149,19 @@ var KTSigninGeneral = function () {
                         {
                             type:'post',
                             url:urlLogin,
+                            data: {
+                                dni: $('#dni').val(),
+                                codigo_verificador: $('#codigo_verificador').val(),
+                                fecha_emision:$('#fecha_emision').val()
+                            },
                             beforeSend:function(){
                                 console.log("consultando");
                             },
                             success:function(response){
+                                console.log("respuesta del controlador",response);
                                 if(response?.estado){
                                     Swal.fire({
-                                        text: "¡Has iniciado sesión exitosamente!",
+                                        text: response.message,
                                         icon: "success",
                                         buttonsStyling: false,
                                         confirmButtonText: "¡Ok, lo tengo!",
@@ -168,7 +173,7 @@ var KTSigninGeneral = function () {
                                     });
                                 }else{
                                     Swal.fire({
-                                        text: "Lo sentimos, uno de los campos ingresado es incorrecto, por favor intente nuevamente",
+                                        text: response.message,
                                         icon: "error",
                                         buttonsStyling: false,
                                         confirmButtonText: "¡Ok, lo tengo!",
@@ -179,6 +184,7 @@ var KTSigninGeneral = function () {
                                 }
                             },
                             error:function(error){
+                                console.log(error);
                                 Swal.fire({
                                     text: "Lo sentimos, uno de los campos ingresado es incorrecto, por favor intente nuevamente",
                                     icon: "error",
