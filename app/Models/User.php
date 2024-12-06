@@ -22,6 +22,7 @@ class User extends Authenticatable
         'dni',
         'codigo_verificador',
         'fecha_emision',
+        'estado',
     ];
 
     /**

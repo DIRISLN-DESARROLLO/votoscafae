@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Middleware\CheckSession;
+use App\Http\Controllers\ImportarController;
 
 Route::get('/', [AuthController::class, 'showLogin'])->name('login');
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
@@ -20,5 +21,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/votacion', [VotacionController::class, 'votar'])->name('votar')->middleware(CheckSession::class);
 });
 
-
+Route::post('/import-excel', [ImportarController::class, 'importExcel']);
+Route::get('/importar', [ImportarController::class, 'index']);
 

@@ -15,8 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('dni')->unique();
             $table->string('codigo_verificador');
-            $table->date('fecha_emision');
-            $table->string('nombre');
+            $table->date('fecha_emision')->nullable();
+            $table->string('nombres')->nullable();
+            $table->string('a_paterno')->nullable();
+            $table->string('a_materno')->nullable();
             $table->boolean('estado');
             $table->string('email')->nullable();
             $table->timestamp('email_verified_at')->nullable();
