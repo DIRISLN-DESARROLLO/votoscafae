@@ -210,8 +210,8 @@
 
 @section('js')
     <script >
-        //const targetDate = new Date('2024-12-13T00:00:00');
-        const targetDate = new Date('2024-12-06T12:16:00');
+        const targetDate = new Date('2024-12-13T00:00:00');
+        //const targetDate = new Date('2024-12-06T12:16:00');
         const countdownElement = document.getElementById('countdown');
         const actionButton = document.getElementById('actionButton');
         function updateCountdown() {
