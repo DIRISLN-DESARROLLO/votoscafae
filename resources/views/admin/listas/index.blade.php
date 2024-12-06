@@ -1,7 +1,6 @@
 @extends('admin.layouts.app')
 
 @section('content')
-
     <div class="d-flex flex-column flex-column-fluid mt-5">
         <div class="row">
             <div class="col-lg-4">

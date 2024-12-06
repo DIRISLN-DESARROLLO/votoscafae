@@ -2,45 +2,45 @@
 
 @section('content')
     <div class="d-flex flex-column flex-column-fluid mt-5">
-        <div id="kt_app_toolbar" class="app-toolbar pt-lg-9 pt-6">
-            <!--
-            <div id="kt_app_toolbar_container"
-                 class="app-container container-fluid d-flex flex-stack flex-wrap">
+        <!-- <div id="kt_app_toolbar" class="app-toolbar pt-lg-9 pt-6">
 
-                <div class="d-flex flex-stack flex-wrap gap-4 w-100">
+         <div id="kt_app_toolbar_container"
+              class="app-container container-fluid d-flex flex-stack flex-wrap">
 
-                    <div class="page-title d-flex flex-column gap-3 me-3">
+             <div class="d-flex flex-stack flex-wrap gap-4 w-100">
 
-                        <h1 class="page-heading d-flex flex-column justify-content-center text-dark fw-bolder fs-2x my-0">
-                            Dashboard</h1>
+                 <div class="page-title d-flex flex-column gap-3 me-3">
 
-                        <ul class="breadcrumb breadcrumb-separatorless fw-semibold">
+                     <h1 class="page-heading d-flex flex-column justify-content-center text-dark fw-bolder fs-2x my-0">
+                         Dashboard</h1>
 
-                            <li class="breadcrumb-item text-gray-700 fw-bold lh-1">
-                                <a href="../dist/index.html" class="text-gray-500">
-                                    <i class="ki-duotone ki-home fs-3 text-gray-400 me-n1"></i>
-                                </a>
-                            </li>
+                     <ul class="breadcrumb breadcrumb-separatorless fw-semibold">
 
-                            <li class="breadcrumb-item">
-                                <i class="ki-duotone ki-right fs-4 text-gray-700 mx-n1"></i>
-                            </li>
+                         <li class="breadcrumb-item text-gray-700 fw-bold lh-1">
+                             <a href="../dist/index.html" class="text-gray-500">
+                                 <i class="ki-duotone ki-home fs-3 text-gray-400 me-n1"></i>
+                             </a>
+                         </li>
 
-                            <li class="breadcrumb-item text-gray-700 fw-bold lh-1">Inicio</li>
+                         <li class="breadcrumb-item">
+                             <i class="ki-duotone ki-right fs-4 text-gray-700 mx-n1"></i>
+                         </li>
 
-                            <li class="breadcrumb-item">
-                                <i class="ki-duotone ki-right fs-4 text-gray-700 mx-n1"></i>
-                            </li>
+                         <li class="breadcrumb-item text-gray-700 fw-bold lh-1">Inicio</li>
 
-                            <li class="breadcrumb-item text-gray-500">Inicio</li>
+                         <li class="breadcrumb-item">
+                             <i class="ki-duotone ki-right fs-4 text-gray-700 mx-n1"></i>
+                         </li>
 
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            -->
+                         <li class="breadcrumb-item text-gray-500">Inicio</li>
+
+                     </ul>
+                 </div>
+             </div>
+         </div>
         </div>
-        <div id="kt_app_content" class="app-content pb-0">
+    -->
+        <div id="kt_app_content">
             <div class="row gx-5 gx-xl-10 mb-5 mb-xl-10">
                 <div class="card card-flush h-lg-100">
                     <div  class="card-body card-body d-flex justify-content-between flex-column pt-3">
