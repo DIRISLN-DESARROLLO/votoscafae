@@ -57,14 +57,15 @@
                                         @php
                                             $user = \Illuminate\Support\Facades\Auth::user();
                                            if ($user) {
-                                               $nombre = $user->nombre;
-                                               $email = $user->email;
+                                               $nombres = $user->nombres;
+                                               $a_paterno = $user->a_paterno;
+                                               $dni = $user->dni;
                                            }
                                         @endphp
-                                        {{@$nombre}}
+                                        {{@$nombres." ".@$a_paterno}}
                                         <span class="badge badge-light-success fw-bold fs-8 px-2 py-1 ms-2">Usuario</span>
                                     </div>
-                                    <a href="#" class="fw-semibold text-muted text-hover-primary fs-7">{{@$email}}</a>
+                                    <a href="#" class="fw-semibold text-muted text-hover-primary fs-7">{{@$dni}}</a>
                                 </div>
                                 <!--end::Username-->
                             </div>

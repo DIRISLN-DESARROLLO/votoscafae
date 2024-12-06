@@ -11,7 +11,14 @@ use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
     public function index(){
-        return view('home');
+       try{
+            $listas= Lista::all();
+            $datos = Lista::with('miembros')->get();
+            return view('home', compact('datos','listas'));
+       }catch (\Exception $exception){
+            return response()->json(['error' => $exception->getMessage()]);
+       }
+
     }
 
 

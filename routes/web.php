@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Middleware\CheckSession;
 use App\Http\Controllers\ImportarController;
+use App\Http\Controllers\ListaController;
 
 Route::get('/', [AuthController::class, 'showLogin'])->name('login');
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
@@ -16,7 +17,7 @@ Route::middleware('auth')->group(function () {
     Route::get("/home",[HomeController::class,'index'])->name('home')->middleware(CheckSession::class);
     Route::get("/dashboard",[VotacionController::class,'resultados'])->name('dashboard')->middleware(CheckSession::class);
     Route::get('/resultados', [VotacionController::class, 'resultados'])->name('resultados')->middleware(CheckSession::class);
-    Route::get('/listas', [VotacionController::class, 'show'])->name('listas')->middleware(CheckSession::class);
+    Route::get('/listas', [ListaController::class, 'index'])->name('listas')->middleware(CheckSession::class);
     Route::get('/votacion', [VotacionController::class, 'show'])->name('votacion')->middleware(CheckSession::class);
     Route::post('/votacion', [VotacionController::class, 'votar'])->name('votar')->middleware(CheckSession::class);
 });

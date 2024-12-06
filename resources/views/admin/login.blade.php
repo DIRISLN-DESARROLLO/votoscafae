@@ -129,10 +129,7 @@
 								<div class="fv-row mb-10">
 								<!--begin::Label-->
 									<label class="form-label fw-bold text-dark fs-6">Fecha de Emision del DNI</label>
-									<!--end::Label-->
-									<!--begin::Input-->
 									<input class="form-control form-control-lg form-control-solid" type="date" placeholder="ingrese la Fecha de Emisión de su DNI" name="fecha_emision" id="fecha_emision" autocomplete="off"  />
-									<!--end::Input-->
 								</div>
 								<div class="text-center">
 									<!--begin::Submit button-->

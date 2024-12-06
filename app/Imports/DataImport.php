@@ -17,8 +17,8 @@ class DataImport implements ToModel
         return new User([
             'dni' => $row[0],
             'nombres'  => $row[1],
-            'a_paterno'=> $row[2],
-            'a_materno'=> $row[3],
+            'a_paterno' => $row[2],
+            'a_materno' => $row[3],
             'fecha_emision' => $this->formatDate(trim($row[5])),
             'codigo_verificador' => $row[6],
             'estado'=>1

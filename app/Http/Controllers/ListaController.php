@@ -10,8 +10,10 @@ class ListaController
     public function index()
     {
         try {
-            $data = Lista::all();
-            return response()->json($data);
+            $listas= Lista::all();
+            $datos = Lista::with('miembros')->get();
+            //return response()->json($data);
+            return view('admin.listas.index', compact('datos','listas'));
         }catch (\Exception $exception){
             return response()->json(['error' => $exception->getMessage()]);
         }
