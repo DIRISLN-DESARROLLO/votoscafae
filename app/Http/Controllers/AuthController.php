@@ -17,32 +17,42 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         try {
-            $credentials = $request->only('dni', 'codigo_verificador', 'fecha_emision');
-            $user = User::where($credentials)->first();
+            // Validar entrada
+            $request->validate([
+                'dni' => 'required|numeric',
+                'codigo_verificador' => 'required|string',
+                'fecha_emision' => 'required|string',
+            ]);
+
+            // Buscar usuario basado en las credenciales
+            $user = User::where('dni', $request->dni)
+                ->where('codigo_verificador', $request->codigo_verificador)
+                ->where('fecha_emision', $request->fecha_emision)
+                ->first();
+
             if ($user) {
-               Auth::login($user);
+                // Login manual si es necesario
+                Auth::login($user);
+
                 return response()->json([
                     'message' => 'Login successful',
                     'user' => $user,
-                    'estado'=>true,
-                    'dni'=> $request->dni
-                    // 'token' => $token,
+                    'estado' => true,
+                    'dni' => $request->dni
                 ]);
-            }else{
+            } else {
                 return response()->json([
                     'message' => 'Usuario no encontrado',
-                    'estado'=>false,
-                    'dni'=> $request->dni
-                    // 'token' => $token,
-                ]);
+                    'estado' => false,
+                    'dni' => $request->dni
+                ], 404);
             }
-        }catch (\Exception $exception){
+        } catch (\Exception $exception) {
             return response()->json([
-                'message' => 'Error del servidor: '.$exception->getMessage(),
-                'estado'=>false,
-                'dni'=> $request->dni
-                // 'token' => $token,
-            ],500);
+                'message' => 'Error del servidor: ' . $exception->getMessage(),
+                'estado' => false,
+                'dni' => $request->dni
+            ], 500);
         }
     }
 
