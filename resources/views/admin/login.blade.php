@@ -54,6 +54,35 @@
                 border-radius: 8px;
                 display: none; /* Oculta la imagen inicialmente */
             }
+            .imagen-referencia{
+                position: absolute;
+                top: 50%;
+                left: 43%;
+                margin-top: -125px;
+                margin-left: -140px;
+                width: 300px !important;
+                height: 245px !important;
+                background-color: white;
+            }
+            @media (max-width: 412px) {
+                .imagen-referencia {
+                    position: relative !important;
+                    top: auto;
+                    left: auto;
+                    margin-top: 0px;
+                    margin-left: 0px;
+                }
+            }
+            @media (max-width: 1166px) {
+                .imagen-referencia {
+                    position: relative !important;
+                    top: auto;
+                    left: auto;
+                    margin-top: 0px;
+                    margin-left: 0px;
+                }
+            }
+
         </style>
 		<script>// Frame-busting to prevent site from being loaded within a frame without permission (click-jacking) if (window.top != window.self) { window.top.location.replace(window.self.location.href); }</script>
 	</head>
@@ -152,10 +181,9 @@
 									<img alt="Logo" src="assets/media/svg/brand-logos/youtube-play.svg" class="h-20px me-3" />Video</a>
 									<!--end::Google link-->
 								</div>
-                                <div id="image-container">
+                                <div id="image-container" class="imagen-referencia">
                                     <img id="dynamic-image" src="" alt="Imagen dinámica">
                                 </div>
-
 								<!--end::Actions-->
 							</form>
 							<!--end::Form-->

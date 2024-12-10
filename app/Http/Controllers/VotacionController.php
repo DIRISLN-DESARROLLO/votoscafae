@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Models\User;
 
 class VotacionController extends Controller {
     public function show()
@@ -20,21 +21,73 @@ class VotacionController extends Controller {
     {
         $user = Auth::user();
         if (Voto::where('user_id', $user->id)->exists()) {
-            return redirect()->back()->withErrors(['error' => 'Ya has votado.']);
+            return response()->json([
+                'success' => false,
+                'message' => 'Ya has votado anteriormente.'
+            ], 200);
         }
-        foreach ($request->listas as $lista_id) {
-            Voto::create(['user_id' => $user->id, 'lista_id' => $lista_id]);
+        $validatedData = $request->validate([
+            'lista' => 'required|integer|exists:listas,id',
+        ]);
+
+        try {
+            Voto::create([
+                'user_id' => $user->id,
+                'lista_id' => $validatedData['lista'],
+                'hash_votacion' => hash('sha256', uniqid($user->id, true))
+            ]);
+            return response()->json([
+                'success' => true,
+                'message' => 'Tu voto ha sido registrado exitosamente.'
+            ], 200);
+        } catch (\Exception $exception) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Ocurrió un problema al registrar tu voto. Inténtalo de nuevo más tarde.',
+                'error' => $exception->getMessage()
+            ], 500);
         }
-        return redirect()->route('resultados');
     }
 
-    public function resultados()
+    public function resultadosback()
     {
+        $totalUsuarios = User::count();
+        $totalVotos = Voto::count();
+        $usuariosNoVotaron = $totalUsuarios - $totalVotos;
+        $porcentajeNoVotaron = ($totalUsuarios > 0) ? ($usuariosNoVotaron / $totalUsuarios) * 100 : 0;
         $resultados = Voto::select('lista_id', DB::raw('COUNT(*) as votos'))
             ->groupBy('lista_id')
             ->with('lista')
             ->get();
-        return view('admin.resultados.index', compact('resultados'));
+
+        foreach ($resultados as $resultado) {
+            $resultado->porcentaje = ($totalVotos > 0) ? ($resultado->votos / $totalVotos) * 100 : 0;
+        }
+        return view('admin.resultados.index', compact('resultados', 'totalUsuarios', 'totalVotos', 'usuariosNoVotaron', 'porcentajeNoVotaron'));
+    }
+
+    public function resultados()
+    {
+        $totalUsuarios = User::count();
+        $totalVotos = Voto::count();
+
+        $usuariosNoVotaron = $totalUsuarios - $totalVotos;
+        $porcentajeNoVotaron = ($totalUsuarios > 0) ? ($usuariosNoVotaron / $totalUsuarios) * 100 : 0;
+
+        $resultados = Voto::select('lista_id', DB::raw('COUNT(*) as votos'))
+            ->groupBy('lista_id')
+            ->with('lista')
+            ->orderByDesc(DB::raw('COUNT(*)')) // Ordenar de mayor a menor por votos
+            ->get();
+
+        foreach ($resultados as $resultado) {
+            $resultado->porcentaje = ($totalUsuarios > 0) ? ($resultado->votos / $totalUsuarios) * 100 : 0;
+        }
+        $ganador = $resultados->first();
+
+        $listas = $resultados->pluck('lista.nombre')->toArray();
+        $votos = $resultados->pluck('votos')->toArray();
+        return view('admin.resultados.index', compact('resultados', 'totalUsuarios', 'totalVotos', 'usuariosNoVotaron', 'porcentajeNoVotaron', 'ganador', 'listas', 'votos'));
     }
 
 }

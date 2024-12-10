@@ -10,7 +10,7 @@
     <!--begin::Menu-->
     <ul class="menu menu-gray-600 menu-hover-primary fw-semibold order-1">
         <li class="menu-item">
-            <a href="#" target="_blank" class="menu-link px-2">Soporte</a>
+            <a href="https://wa.me/51965203667?text=Hola,%20quiero%20más%20información" target="_blank" class="menu-link px-2">Soporte</a>
         </li>
     </ul>
     <!--end::Menu-->

@@ -7,8 +7,8 @@ $("#btn-resultados").click(function(){
 $("#btn-home").click(function(){
     window.location.href = '/home';
 });
-$("#constancia").click(function(){
-    window.location.href = '/constancia';
+$("#btn-constancia").click(function(){
+    window.open('/constancia', '_blank');
 });
 $("#btn-ayuda").click(function() {
     window.open('https://wa.me/51965203667?text=Hola,%20quiero%20más%20información', '_blank');

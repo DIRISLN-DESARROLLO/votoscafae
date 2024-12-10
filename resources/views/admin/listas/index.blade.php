@@ -38,9 +38,9 @@
                         @if($datos && $datos->count() > 0)
                             @foreach($datos as $dato)
                                 @if($dato->id !=3)
-                                    <div id="lista-{{$dato->id}}" style="display: none">
+                                    <div id="lista-{{$dato->id}}" style="display: none;width: 100%">
                                         <ul class="list-group list-group-flush">
-                                                <li class="list-group-item list-group-item-action active p-4"> {{ $dato->nombre }}</li>
+                                            <li class="list-group-item list-group-item-action active p-4"> <h3 class="text-white">{{ $dato->nombre }}</h3></li>
                                             @foreach($dato->miembros as $miembro)
                                                 <li class="list-group-item p-4"> <i class="fa fa-user" aria-hidden="true"></i>  {{ $miembro->nombre }}</li>
                                             @endforeach

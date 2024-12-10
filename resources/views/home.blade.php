@@ -53,9 +53,15 @@
                         </div>
                         <div class="row mt-4">
                             <div class="col-12 text-center">
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_upgrade_plan" id="actionButton" disabled>
-                                    Ir a Votación
-                                </button>
+                                @if ($estado)
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_upgrade_plan" id="actionButton">
+                                        Ir a Votación
+                                    </button>
+                                @else
+                                    <button type="button" class="btn btn-secondary" id="actionButton" onclick="actualizar()" disabled>
+                                        Aún no es tiempo de votar
+                                    </button>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -63,8 +69,9 @@
             </div>
         </div>
     </div>
-
-    <div class="modal fade" id="kt_modal_upgrade_plan" tabindex="-1" aria-hidden="true">
+    <form id="form-votar">
+        @csrf
+        <div class="modal fade" id="kt_modal_upgrade_plan" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content rounded">
                 <div class="modal-header justify-content-end border-0 pb-0">
@@ -86,21 +93,21 @@
                         <div class="row mt-10">
                             <div class="col-lg-6 mb-10 mb-lg-0">
                                 <div class="nav flex-column">
-                                    @foreach($listas as $lista)
-                                        <label class="nav-link btn btn-outline btn-outline-dashed btn-color-dark btn-active btn-active-primary d-flex flex-stack text-start p-6 mb-6"
-                                            data-bs-toggle="tab" data-bs-target="#lista-{{$lista->id}}">
-                                            <div class="d-flex align-items-center me-2">
-                                                <div
-                                                    class="form-check form-check-custom form-check-solid form-check-success flex-shrink-0 me-6">
-                                                    <input class="form-check-input" type="radio" name="plan" value="startup"/>
+                                        @foreach($listas as $lista)
+                                            <label class="nav-link btn btn-outline btn-outline-dashed btn-color-dark btn-active btn-active-primary d-flex flex-stack text-start p-6 mb-6"
+                                                   data-bs-toggle="tab" data-bs-target="#lista-{{$lista->id}}">
+                                                <div class="d-flex align-items-center me-2">
+                                                    <div
+                                                        class="form-check form-check-custom form-check-solid form-check-success flex-shrink-0 me-6">
+                                                        <input class="form-check-input" type="radio" name="lista" value="{{$lista->id}}"/>
+                                                    </div>
+                                                    <div class="flex-grow-1">
+                                                        <span class="text-gray-900 fw-bold d-block fs-3">{{$lista->nombre}}</span>
+                                                        <span class="text-muted fw-semibold fs-6">Ver Integrantes</span>
+                                                    </div>
                                                 </div>
-                                                <div class="flex-grow-1">
-                                                    <span class="text-gray-900 fw-bold d-block fs-3">{{$lista->nombre}}</span>
-                                                    <span class="text-muted fw-semibold fs-6">Ver Integrantes</span>
-                                                </div>
-                                            </div>
-                                        </label>
-                                    @endforeach
+                                            </label>
+                                        @endforeach
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -189,16 +196,15 @@
                     </div>
                     <div class="d-flex flex-center flex-row-fluid pt-12">
                         <button type="reset" class="btn btn-light me-3" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-primary" id="kt_modal_upgrade_plan_btn">
+                        <button type="submit" class="btn btn-primary" id="btn-votar">
                             <span class="indicator-label">Votar</span>
-                            <span class="indicator-progress">Procesando...
-								<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
                         </button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    </form>
 @endsection
 @section('css')
     <style>
@@ -209,29 +215,9 @@
 @stop
 
 @section('js')
-    <script >
-        const targetDate = new Date('2024-12-13T00:00:00');
-        //const targetDate = new Date('2024-12-06T12:16:00');
-        const countdownElement = document.getElementById('countdown');
-        const actionButton = document.getElementById('actionButton');
-        function updateCountdown() {
-            const now = new Date();
-            const timeDifference = targetDate - now;
-
-            if (timeDifference <= 0) {
-                countdownElement.innerHTML = '¡Ya iniciaron las votaciones, realiza tu voto <i class="fa fa-check-square-o" style="font-size: 23px" aria-hidden="true"></i>, Ahora!';
-                actionButton.disabled = false;
-                clearInterval(interval);
-                return;
-            }
-            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
-            countdownElement.innerText = `${days} días, ${hours} horas, ${minutes} minutos, ${seconds} segundos restantes`;
-        }
-        const interval = setInterval(updateCountdown, 1000);
-        updateCountdown();
-
+    <script>
+        var fecha = "{{$fecha}}";
+        var urlVotar = "{{route('votar')}}";
     </script>
+    <script src="{{ asset('assets/js/home.js') }}"></script>
 @stop
