@@ -6,15 +6,49 @@
             <div class="col-lg-8">
                 <div class="card card-flush h-lg-100">
                     <div class="card-header py-7">
-                        <h2>Resultados de la Votación</h2>
+                        <h2><i class="fa fa-line-chart icono-Titulo" aria-hidden="true"></i> Resultados de la Votación</h2>
                     </div>
                     <div  class="card-body card-body d-flex justify-content-between flex-column pt-3">
-                        <p><strong>Total de Usuarios: </strong>{{ $totalUsuarios }}</p>
-                        <p><strong>Total de Votos: </strong>{{ $totalVotos }}</p>
-                        <p><strong>Usuarios que no votaron: </strong>{{ $usuariosNoVotaron }}</p>
-                        <p><strong>Porcentaje de Usuarios que No Votaron: </strong>{{ number_format($porcentajeNoVotaron, 2) }}%</p>
                         <table class="table table-bordered">
-                            <thead class="thead-dark">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <strong><i class="fa fa-users" aria-hidden="true"></i> Total de Usuarios: </strong>
+                                    </td>
+                                    <td>
+                                        {{ $totalUsuarios }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong><i class="fa fa-check-square-o" aria-hidden="true"></i> Total de Votos: </strong>
+                                    </td>
+                                    <td>
+                                        {{ $totalVotos }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong><i class="fa fa-user-times" aria-hidden="true"></i> Usuarios que no votaron: </strong>
+                                    </td>
+                                    <td>
+                                        {{ $usuariosNoVotaron }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong><i class="fa fa-percent" aria-hidden="true"></i> Porcentaje de Usuarios que No Votaron: </strong>
+                                    </td>
+                                    <td>
+                                        {{ number_format($porcentajeNoVotaron, 2) }}%
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+                        <table class="table table-bordered">
+                            <thead class="thead-dark cabecera-tabla">
                             <tr>
                                 <th>Opción</th>
                                 <th>Votos</th>
@@ -24,7 +58,14 @@
                             <tbody>
                             @foreach($resultados as $resultado)
                                 <tr>
-                                    <td>{{ $resultado->lista->nombre }}</td>
+                                    <td>
+                                        @if($ganador->lista->nombre == $resultado->lista->nombre)
+                                            <i class="fa fa-trophy ganador" aria-hidden="true"></i>
+                                            <strong> {{ $resultado->lista->nombre }}</strong>
+                                        @else
+                                            {{ $resultado->lista->nombre }}
+                                        @endif
+                                    </td>
                                     <td>{{ $resultado->votos }}</td>
                                     <td>{{ number_format($resultado->porcentaje, 2) }}%</td>
                                 </tr>
@@ -33,7 +74,7 @@
                         </table>
                         <!-- Mostrar al ganador -->
                         @if ($ganador)
-                            <h4>El ganador es: {{ $ganador->lista->nombre }} con {{ $ganador->votos }} votos ({{ number_format($ganador->porcentaje, 2) }}%)</h4>
+                            <h4>El ganador es:  <i class="fa fa-trophy ganador-big" aria-hidden="true"></i> {{ $ganador->lista->nombre }} con {{ $ganador->votos }} votos ({{ number_format($ganador->porcentaje, 2) }}%)</h4>
                         @endif
 
                     </div>
@@ -42,7 +83,7 @@
             <div class="col-lg-4">
                 <div class="card card-flush h-lg-100">
                     <div class="card-header py-7">
-                        <h2>Resultado gráfico</h2>
+                        <h2><i class="fa fa-pie-chart icono-Titulo" aria-hidden="true"></i> Resultado gráfico</h2>
                     </div>
                     <div  class="card-body card-body d-flex justify-content-between flex-column pt-3">
                         <canvas id="myChart" class="grafico"></canvas>

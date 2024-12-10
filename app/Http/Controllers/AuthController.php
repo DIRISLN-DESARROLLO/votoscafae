@@ -35,7 +35,7 @@ class AuthController extends Controller
                 Auth::login($user);
 
                 return response()->json([
-                    'message' => 'Login successful',
+                    'message' => 'Inicio de sesión exitoso',
                     'user' => $user,
                     'estado' => true,
                     'dni' => $request->dni

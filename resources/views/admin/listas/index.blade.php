@@ -34,23 +34,27 @@
             </div>
             <div class="col-lg-8">
                 <div class="card card-flush h-lg-100">
-                    <div class="card-header py-7">
-                        @if($datos && $datos->count() > 0)
-                            @foreach($datos as $dato)
-                                @if($dato->id !=3)
-                                    <div id="lista-{{$dato->id}}" style="display: none;width: 100%">
-                                        <ul class="list-group list-group-flush">
-                                            <li class="list-group-item list-group-item-action active p-4"> <h3 class="text-white">{{ $dato->nombre }}</h3></li>
-                                            @foreach($dato->miembros as $miembro)
-                                                <li class="list-group-item p-4"> <i class="fa fa-user" aria-hidden="true"></i>  {{ $miembro->nombre }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
+                    <div class="card-body py-7">
+                        <div class="row">
+                            <div class="col-12">
+                                @if($datos && $datos->count() > 0)
+                                    @foreach($datos as $dato)
+                                        @if($dato->id !=3)
+                                            <div id="lista-{{$dato->id}}" style="display: none;width: 100%">
+                                                <ul class="list-group list-group-flush">
+                                                    <li class="list-group-item list-group-item-action active p-4"> <h3 class="text-white">{{ $dato->nombre }}</h3></li>
+                                                    @foreach($dato->miembros as $miembro)
+                                                        <li class="list-group-item p-4"> <i class="fa fa-user" aria-hidden="true"></i>  {{ $miembro->nombre }}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                @else
+                                    <p>No hay listas disponibles.</p>
                                 @endif
-                            @endforeach
-                        @else
-                            <p>No hay listas disponibles.</p>
-                        @endif
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

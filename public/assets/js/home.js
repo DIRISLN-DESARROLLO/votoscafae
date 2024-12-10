@@ -8,8 +8,8 @@ function updateCountdown() {
 
     if (timeDifference <= 0) {
         countdownElement.innerHTML = '¡Ya iniciaron las votaciones, realiza tu voto <i class="fa fa-check-square-o" style="font-size: 23px" aria-hidden="true"></i>, Ahora!';
-        if(actionButton.innerHTML !== "Ir a Votación"){
-            actionButton.innerHTML = 'Actualizar';
+        if(actionButton.dataset.text !== "Ir a Votacion"){
+            actionButton.innerHTML = 'Iniciar';
         }
         actionButton.disabled = false;
         clearInterval(interval);
@@ -32,6 +32,8 @@ function actualizar(){
 $('#form-votar').submit(function (event) {
     event.preventDefault();
     const selectedValue = $('input[name="lista"]:checked').val();
+    const email = $("#email").val() || 0;
+    const checkEmail = $("#checkEmail").prop("checked");
     if (!selectedValue) {
         Swal.fire({
             text: 'Por favor selecciona una opción antes de votar.',
@@ -54,11 +56,14 @@ $('#form-votar').submit(function (event) {
         method: 'POST',
         data: {
             lista: selectedValue,
+            email:email || '',
+            checkEmail:checkEmail
         },
         beforeSend:function(){
             $("#btn-votar").html("Procesando Voto...");
         },
         success: function (response) {
+            console.log(response);
             if(response.success){
                 Swal.fire({
                     text: response.message,
@@ -84,7 +89,7 @@ $('#form-votar').submit(function (event) {
             }
         },
         error: function (error) {
-            console.log(error),
+            console.log(error);
             Swal.fire({
                 text: error.message,
                 icon: "error",

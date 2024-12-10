@@ -16,8 +16,9 @@
     <meta property="og:url" content="https://keenthemes.com/products/oswald-html-pro"/>
     <meta property="og:site_name" content="Keenthemes | Oswald HTML Free"/>
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="shortcut icon" href="img/icono.png"/>
+
     <link rel="canonical" href="https://preview.keenthemes.com/axel-html-free"/>
-    <link rel="shortcut icon" href="assets/media/logos/favicon.ico"/>
     <!--begin::Fonts(mandatory for all pages)-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700"/>
     <!--end::Fonts-->
@@ -28,6 +29,34 @@
     <!--begin::Global Stylesheets Bundle(mandatory for all pages)-->
     <link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css"/>
     <link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css"/>
+    <style>
+        .app-header .app-header-primary{
+            background: linear-gradient(45deg, #003f88, #0074d9, #12408c) !important;
+        }
+        .ganador{
+            color: #ffcc00 !important;
+        }
+        .icono-Titulo{
+            font-size: 18px !important;
+            color: #1f4290 !important;
+        }
+        .cabecera-tabla{
+            background: #144593 !important;
+            color: white !important;
+        }
+        .ganador-big{
+            font-size: 24px !important;
+            color: #ffcc00 !important;
+        }
+        .dni-usuario{
+            color: white !important;
+            font-size: 20px;
+            margin-right: 10px;
+        }
+        .icon-email{
+            font-size: 22px !important;
+        }
+    </style>
     @yield('css')
     <!--end::Global Stylesheets Bundle-->
     <script>// Frame-busting to prevent site from being loaded within a frame without permission (click-jacking) if (window.top != window.self) { window.top.location.replace(window.self.location.href); }</script>

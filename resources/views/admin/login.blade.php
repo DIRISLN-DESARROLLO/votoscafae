@@ -14,7 +14,7 @@
 		<meta property="og:site_name" content="Keenthemes | Oswald HTML Free" />
         <meta name="csrf-token" content="{{ csrf_token() }}">
 		<link rel="canonical" href="https://preview.keenthemes.com/axel-html-free" />
-		<link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
+		<link rel="shortcut icon" href="img/icono.png" />
 		<!--begin::Fonts(mandatory for all pages)-->
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />
 		<!--end::Fonts-->
@@ -214,9 +214,9 @@
             var urlLogin ="{{ route('login') }}";
             // Array de URLs de imágenes
             const images = [
-                "https://apps.reniec.gob.pe/renovacionDni/assets/img/imagen_principa.png",
-                "https://elperuano.pe/fotografia//thumbnail/2024/05/25/000297533M.jpg",
-                "https://latinanoticias.pe/wp-content/uploads/2023/08/DNIE.png"
+                "img/1.jpeg",
+                "img/2.jpeg",
+                "img/3.jpeg"
             ];
 
             const inputFields = document.querySelectorAll('.form-control');
