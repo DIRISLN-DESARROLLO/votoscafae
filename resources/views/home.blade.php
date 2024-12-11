@@ -97,7 +97,7 @@
                                 <div class="form-check mb-3 d-flex flex-center flex-row-fluid">
                                     <input class="form-check-input" type="checkbox" value="" id="checkEmail">
                                     <label class="form-check-label text-primary" for="checkEmail">&nbsp;
-                                         Notificar al Correo electronico
+                                        Notificar al Correo electronico <span class="opcional">(Opcional)</span>
                                     </label>
                                 </div>
                                 <div class="input-group mb-3">

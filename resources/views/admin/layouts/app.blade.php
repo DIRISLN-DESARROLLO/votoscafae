@@ -56,6 +56,9 @@
         .icon-email{
             font-size: 22px !important;
         }
+        .opcional{
+            color: #b10404;
+        }
     </style>
     @yield('css')
     <!--end::Global Stylesheets Bundle-->

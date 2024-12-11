@@ -3,72 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notificación de Estado de Internet</title>
+    <title>Notificación sobre la votación</title>
     <style>
-        /* Estilos básicos en línea */
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
+        body {
             font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-        }
-        .header {
-            color: white;
-            padding: 10px;
-            text-align: center;
-            border-radius: 8px 8px 0 0;
-        }
-        .activo{
-            background-color: #4CAF50;
-        }
-        .inactivo{
-            background-color: #bb0b0b;
-        }
-        .content {
-            margin-top: 20px;
-            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
             color: #333;
         }
-        .footer {
-            margin-top: 30px;
-            font-size: 0.8em;
-            color: #777;
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .header {
             text-align: center;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
         }
-        .btn {
-            display: inline-block;
-            background-color: #4CAF50;
-            color: white !important;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #4CAF50;
+        }
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .footer {
             margin-top: 20px;
-        }
-        .btn:hover {
-            background-color: #45a049;
+            text-align: center;
+            font-size: 12px;
+            color: #777;
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <div class="header {{ $item['estado'] == 0 && $item['tiempo_respuesta'] ==0 ? 'inactivo': 'activo' }}">
-        <h2>Estado de Internet de: {{ $establecimiento }}</h2>
+    <div class="header">
+        <h1>¡Gracias por tu voto!</h1>
     </div>
     <div class="content">
-        <p>
-            Mensaje de la situación actual del servicio de internet:
-        </p>
-        <p>
-            <strong>Tiempo de respuesta:</strong> {{ $informacion }}
-        </p>
-        <a href="https://wa.me/+51989698267" target="_blank" class="btn">Ver más detalles</a>
+        <p>Estimado/a <strong>{{ $user['nombres']." ".$user['a_paterno']." ".$user['a_materno']}}</strong>,</p>
+        <p>Queremos informarte que tu voto ha sido registrado exitosamente. Apreciamos tu participación y compromiso con este proceso.</p>
+        <p>Si tienes alguna pregunta o necesitas asistencia, no dudes en contactarnos.</p>
+        <p>Detalles del proceso:</p>
+        <ul>
+            <li><strong>Fecha de votacion:</strong> {{ now()->format('d/m/Y H:i:s') }}</li>
+            <li><strong>Hash de seguridad:</strong> {{ $hash }}</li>
+        </ul>
+        <p>Gracias por tu colaboración.</p>
     </div>
     <div class="footer">
-        <p>Este es un mensaje automático, por favor no responder.</p>
-        <p>&copy; {{ date('Y') }} Diris LN. Todos los derechos reservados.</p>
+        <p>Dirección de Redes Integradas de Salud Lima Norte</p>
     </div>
 </div>
 </body>

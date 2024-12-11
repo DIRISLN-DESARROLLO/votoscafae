@@ -17,12 +17,14 @@ class NotificacionEmail extends Mailable
     /**
      * Create a new message instance.
      */
-    public $informacion;
-    public $establecimiento;
-    public function __construct($informacion,$establecimiento)
+    public $user;
+    public $lista;
+    public $hash;
+    public function __construct($user,$lista,$hash)
     {
-        $this->informacion = $informacion;
-        $this->establecimiento = $establecimiento;
+        $this->user = $user;
+        $this->lista = $lista;
+        $this->hash = $hash;
     }
 
     /**
@@ -32,7 +34,7 @@ class NotificacionEmail extends Mailable
     {
         return new Envelope(
             from: new Address('devops@dirisln.gob.pe', 'Direccion de Redes Integradas de Salud Lima Norte'),
-            subject: 'Notificacion - Estado de Internet del - ' . $this->establecimiento,
+            subject: 'Notificacion - Votaciones 2024 ',
         );
     }
 
