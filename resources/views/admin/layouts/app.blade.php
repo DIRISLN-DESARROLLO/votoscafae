@@ -5,20 +5,17 @@
     <base href=""/>
     <title>Votaciones SUB-CAFAE - 2024</title>
     <meta charset="utf-8"/>
-    <meta name="description"
-          content="Axel admin dashboard live demo. Check out all the features of the admin panel. A large number of settings, additional services and widgets."/>
-    <meta name="keywords"
-          content="Axel theme, bootstrap, bootstrap 5, admin themes, free admin themes, bootstrap admin, bootstrap dashboard"/>
+    <meta name="description" content="Sistema de votaciones de DIRIS LN" />
+    <meta name="keywords" content="votaciones, diris ln, 2024" />
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta property="og:locale" content="en_US"/>
     <meta property="og:type" content="article"/>
-    <meta property="og:title" content="Oswald HTML Free - Bootstrap 5 HTML Multipurpose Admin Dashboard Theme"/>
-    <meta property="og:url" content="https://keenthemes.com/products/oswald-html-pro"/>
+    <meta property="og:title" content="Login SUBCAFAE - DIRIS Lima Norte" />
+    <meta property="og:url" content="https://votaciones.dirisln.gob.pe:2024/" />
     <meta property="og:site_name" content="Keenthemes | Oswald HTML Free"/>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" href="img/icono.png"/>
-
-    <link rel="canonical" href="https://preview.keenthemes.com/axel-html-free"/>
+    <link rel="canonical" href="https://votaciones.dirisln.gob.pe:2024/" />
     <!--begin::Fonts(mandatory for all pages)-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700"/>
     <!--end::Fonts-->

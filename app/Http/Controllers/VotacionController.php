@@ -13,6 +13,8 @@ use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 
 class VotacionController extends Controller {
+    public $fecha_fin='2024-12-13T16:00:00';
+
     public function show()
     {
         $listas = Lista::with('miembros')->get();
@@ -22,6 +24,14 @@ class VotacionController extends Controller {
     public function votar(Request $request)
     {
         try {
+            $hoy = now()->format('Y-m-d\TH:i:s');
+           if($hoy > $this->fecha_fin){
+               return response()->json([
+                   'success' => false,
+                   'message' => 'El horario de Votacion ya culmino!',
+               ], 200);
+           }
+
             $user = Auth::user();
 
             if (Voto::where('user_id', $user->id)->exists()) {
@@ -86,6 +96,10 @@ class VotacionController extends Controller {
 
     public function resultados()
     {
+        $hoy = now()->format('Y-m-d\TH:i:s');
+        if(!($hoy > $this->fecha_fin)){
+            return view('admin.resultados.loading');
+        }
         $totalUsuarios = User::count();
         $totalVotos = Voto::count();
 

@@ -7,7 +7,7 @@ use Illuminate\Routing\Controller;
 
 class HomeController extends Controller
 {
-    public $fecha='2024-12-10T15:44:00';
+    public $fecha='2024-12-13T08:00:00';
     public $estado =false;
 
     public function index(){

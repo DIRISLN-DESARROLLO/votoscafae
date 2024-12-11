@@ -46,7 +46,9 @@
                     <div  class="card-body card-body d-flex justify-content-between flex-column pt-3">
                         <div class="row mt-5">
                             <div class="col-12 text-center">
-                                <h1>El cambio comienza con tu voto, participa y haz la diferencia.</h1>
+                                <h1>El cambio comienza con tu voto, participa y haz la diferencia.
+                                <br>
+                                    Horario de Votacion es de las 8:00 am a las 4:00 pm del dia 13 de Diciembre del 2024 </h1>
                                 <img src="img/banner.jpg" />
                                 <hr>
                                 <div id="countdown" class="contador"></div>
