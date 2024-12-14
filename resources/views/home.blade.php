@@ -49,7 +49,7 @@
                                 <h1>El cambio comienza con tu voto, participa y haz la diferencia.
                                 <br>
                                     Horario de Votacion es de las 8:00 am a las 4:00 pm del dia 13 de Diciembre del 2024 </h1>
-                                <img src="img/banner.jpg" />
+                                <img src="img/banner.jpg" class="imagen_inicio"/>
                                 <hr>
                                 <div id="countdown" class="contador"></div>
                             </div>
@@ -95,7 +95,8 @@
                     <div class="separator my-2"></div>
                     <div class="d-flex flex-column">
                         <div class="row mt-5">
-                            <div class="col-4 offset-md-4">
+						<div class="col-md-4 "></div>
+                            <div class="col-md-4 col-sm-12">
                                 <div class="form-check mb-3 d-flex flex-center flex-row-fluid">
                                     <input class="form-check-input" type="checkbox" value="" id="checkEmail">
                                     <label class="form-check-label text-primary" for="checkEmail">&nbsp;
@@ -167,6 +168,14 @@
     .contador{
         font-size: 30px;
     }
+	
+	@media only screen and (max-width: 720px){
+		.imagen_inicio{
+			width:100%;
+		}
+	}
+	
+
     </style>
 @stop
 

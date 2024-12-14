@@ -32,7 +32,7 @@
     </div>
     <div class="info">
         <p><strong>Usuario:</strong><br><br>{{ $user->names }} {{ $user->a_paterno }} {{ $user->a_materno }}</p>
-        <p><strong>Fecha del Voto:</strong><br><br>{{ $voto->created_at->format('d/m/Y H:i:s') }}</p>
+  <p><strong>Fecha del Voto:</strong><br><br>   13/12/2024</p>
         <p><strong>Opción Votada:</strong><br><br>{{ $lista->nombre }}</p>
         <p><strong>Código de Voto:</strong><br><br>{{ $voto->hash_votacion }}</p>
     </div>

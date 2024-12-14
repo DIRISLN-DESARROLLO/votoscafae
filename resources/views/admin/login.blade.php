@@ -72,6 +72,9 @@
                     margin-top: 0px;
                     margin-left: 0px;
                 }
+				.logo-login{
+					width:100%;
+				}
             }
             @media (max-width: 1166px) {
                 .imagen-referencia {
@@ -103,7 +106,7 @@
 						<!--begin::Header-->
 						<div class="d-flex flex-row-fluid flex-column text-center p-5 p-lg-10 pt-lg-20">
 							<a href="../dist/index.html" class="py-2 py-lg-20">
-                                <img alt="Logo" src="img/logo.png" class=" h-40px h-lg-50px" width="350px"/>
+                                <img alt="Logo" src="img/logo.png" class=" h-40px h-lg-50px logo-login" width="350px"/>
 							</a>
 							<h1 class="d-none d-lg-block fw-bold text-white fs-2qx pb-5 pb-md-10">Votaciones SUB CAFAE</h1>
 							<p class="d-none d-lg-block fw-semibold fs-2 text-white">Plataforma virtual para el proceso electoral</p>
@@ -173,11 +176,11 @@
 									<!--end::Separator-->
 
 									<!--begin::Google link-->
-									<a href="#" class="btn btn-flex flex-center btn-light btn-lg w-100 mb-5">
+									<a href="https://drive.google.com/file/d/1lqPf2ImpcS7LHJ88PXBGUWvF-tPmQ2RD/view" target="_blank" class="btn btn-flex flex-center btn-light btn-lg w-100 mb-5">
 									<img alt="Logo" src="assets/media/svg/brand-logos/webpack-icon.svg" class="h-20px me-3" />Manual</a>
 									<!--end::Google link-->
 									<!--begin::Google link-->
-									<a href="#" class="btn btn-flex flex-center btn-light btn-lg w-100 mb-5">
+									<a href="https://drive.google.com/file/d/1umHc3rsijBxfBk0XHxp-qDdjFekNOmoQ/view" target="_blank" class="btn btn-flex flex-center btn-light btn-lg w-100 mb-5">
 									<img alt="Logo" src="assets/media/svg/brand-logos/youtube-play.svg" class="h-20px me-3" />Video</a>
 									<!--end::Google link-->
 								</div>
@@ -197,7 +200,7 @@
 					<div class="d-flex flex-center flex-wrap fs-6 p-5 pb-0">
 						<!--begin::Links-->
 						<div class="d-flex flex-center fw-semibold fs-6">
-							<a href="#" class="text-muted text-hover-primary px-2" target="_blank">Soporte</a>
+							<a href="https://wa.me/+51946897292" target="_blank" class="text-muted text-hover-primary px-2" target="_blank">Soporte</a>
 						</div>
 						<!--end::Links-->
 					</div>

@@ -19,7 +19,7 @@ class ConstanciaController extends Controller
                 ->first();
             if($voto){
                 $lista =Lista::where('id',$voto->lista_id)
-                    ->first();;
+                    ->first();
                 $pdf = Pdf::loadView('constancia.constancia', compact('user', 'lista', 'voto'));
                 return $pdf->stream('constancia_voto_' . $voto->id . '.pdf');
             }else{

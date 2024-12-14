@@ -8,7 +8,7 @@
                     <div  class="card-body card-body d-flex justify-content-between flex-column pt-3 text-center">
                         <h2 class="mt-5">
                             <i class="fa fa-line-chart icono-Titulo" aria-hidden="true"></i>
-                            Los Resultados <i class="fa fa-trophy ganador-big" aria-hidden="true"></i> sera publicados una vez cumplido el horario de votacion
+                            Los Resultados <i class="fa fa-trophy ganador-big" aria-hidden="true"></i> seran publicados una vez cumplido el horario de votacion
                         </h2>
                     </div>
                 </div>

@@ -13,7 +13,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 
 class VotacionController extends Controller {
-    public $fecha_fin='2024-12-13T16:00:00';
+    public $fecha_fin='2024-12-13T16:01:00';
 
     public function show()
     {
@@ -61,6 +61,8 @@ class VotacionController extends Controller {
                 'user_id' => $user->id,
                 'lista_id' => $validatedData['lista'],
                 'hash_votacion' => $hash,
+				'created_at' => null,
+    'updated_at' => null, 
             ]);
 
             return response()->json([
